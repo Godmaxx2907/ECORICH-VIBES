@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width,
+          initial-scale=1.0">
+
+    <title>Search</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for(
+          'static',
+          filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <div class="logo">
+            ECORICH VIBES LLP
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+        </ul>
+
+    </nav>
+
+    <section class="section">
+
+        <h1 class="section-title">
+            Search Results for "{{ query }}"
+        </h1>
+
+        <div class="grid">
+
+            {% for product in products %}
+
+            <a href="/product/{{ product.id }}"
+               class="product-link">
+
+                <div class="product-card">
+
+                    <img src="{{ url_for(
+                    'static',
+                    filename='images/products/'
+                    + product.image ) }}">
+
+                    <h3>{{ product.name }}</h3>
+
+                    <p>{{ product.description }}</p>
+
+                    <h4>{{ product.price }}</h4>
+
+                </div>
+
+            </a>
+
+            {% endfor %}
+
+        </div>
+
+    </section>
+
+</body>
+</html>

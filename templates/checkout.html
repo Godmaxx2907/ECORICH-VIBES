@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width,
+          initial-scale=1.0">
+
+    <title>Checkout</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for(
+          'static',
+          filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <div class="logo">
+            ECORICH VIBES LLP
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/cart">Cart</a></li>
+        </ul>
+
+    </nav>
+
+    <section class="checkout-container">
+
+        <div class="checkout-form">
+
+            <h2>Customer Details</h2>
+
+            <form method="POST">
+
+                <input type="text"
+                       name="name"
+                       placeholder="Full Name"
+                       required>
+
+                <input type="text"
+                       name="phone"
+                       placeholder="Phone Number"
+                       required>
+
+                <textarea
+                    name="address"
+                    placeholder="Delivery Address"
+                    required></textarea>
+
+                <button type="submit">
+                    Order on WhatsApp
+                </button>
+
+            </form>
+
+        </div>
+
+        <div class="order-summary">
+
+            ```html
+<h2>
+    Order Summary
+</h2>
+
+{% for item in cart_items %}
+
+<div class="card"
+     style="margin-bottom:20px;">
+
+    <h3>
+        {{ item.name }}
+    </h3>
+
+    <p>
+        Price:
+        {{ item.price }}
+    </p>
+
+    <p>
+        Quantity:
+        {{ item.quantity }}
+    </p>
+
+    <p>
+        Subtotal:
+        ₹{{ item.subtotal }}
+    </p>
+
+</div>
+
+{% endfor %}
+
+<h2>
+    Total: ₹{{ total }}
+</h2>
+```
+
+
+        </div>
+
+    </section>
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ product.name }}</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static',
+          filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <div class="logo">
+            ECORICH VIBES LLP
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+        </ul>
+
+    </nav>
+
+    <section class="product-detail">
+
+        <div class="product-image">
+
+            <img src="{{ url_for('static',
+            filename='images/products/' + product.image) }}">
+
+        </div>
+
+        <div class="product-info">
+
+            <h1>{{ product.name }}</h1>
+
+            <h2>{{ product.price }}</h2>
+
+            <p>{{ product.description }}</p>
+
+            <h4>Category: {{ product.category }}</h4>
+
+            <a href="/add-to-cart/{{ product.id }}">
+
+    <button class="buy-btn">
+        Add To Cart
+    </button>
+
+</a>
+
+            <a href="https://wa.me/918806288082?text=Hello I want to order {{ product.name }}"
+               target="_blank">
+
+                <button class="whatsapp-btn">
+                    Order On WhatsApp
+                </button>
+
+            </a>
+
+        </div>
+
+    </section>
+
+</body>
+</html>

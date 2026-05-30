@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width,
+          initial-scale=1.0">
+
+    <title>Cart</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for(
+          'static',
+          filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <div class="logo">
+            ECORICH VIBES LLP
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+        </ul>
+
+    </nav>
+
+    <section class="section">
+
+        <h1 class="section-title">
+            Shopping Cart
+        </h1>
+
+        {% for item in cart_items %}
+
+        <div class="cart-card">
+
+            <img src="{{ url_for(
+            'static',
+            filename='images/products/'
+            + item.image ) }}">
+
+            <div>
+
+                <h2>{{ item.name }}</h2>
+
+                <h3>{{ item.price }}</h3>
+
+                <a href="/remove-from-cart/{{ item.id }}">
+                    Remove
+                </a>
+                <p>
+    Quantity: {{ item.quantity }}
+</p>
+
+<a href="/decrease-quantity/{{ item.id }}">
+    <button>-</button>
+</a>
+
+
+<a href="/increase-quantity/{{ item.id }}">
+    <button>+</button>
+</a>
+
+<p>
+    Subtotal:
+    ₹{{ item.subtotal }}
+</p>
+
+<p>
+    Price:
+    {{ item.price }}
+</p>
+
+<p>
+    Quantity:
+    {{ item.quantity }}
+</p>
+
+<p>
+    Subtotal:
+    ₹{{ item.subtotal }}
+</p>
+
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+        <div class="cart-total">
+
+            <h2>Total: ₹{{ total }}</h2>
+
+            <a href="/checkout">
+
+    <button>
+        Checkout
+    </button>
+
+</a>
+        </div>
+
+    </section>
+
+</body>
+</html>
