@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width,
+          initial-scale=1.0">
+
+    <title>Orders</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for(
+          'static',
+          filename='css/style.css') }}">
+</head>
+
+<body>
+
+<section class="section">
+
+    <h1 class="section-title">
+        Customer Orders
+    </h1>
+
+    {% for order in orders %}
+
+    <div class="order-card">
+
+        <h2>
+            Order #{{ order.id }}
+        </h2>
+
+        <p>
+            <strong>Name:</strong>
+            {{ order.customer_name }}
+        </p>
+
+        <p>
+            <strong>Phone:</strong>
+            {{ order.phone }}
+        </p>
+
+        <p>
+            <strong>Address:</strong>
+            {{ order.address }}
+        </p>
+
+        <p>
+            <strong>Products:</strong>
+            {{ order.products }}
+        </p>
+
+        <p>
+            <strong>Total:</strong>
+            ₹{{ order.total }}
+        </p>
+
+        <p>
+            <strong>Status:</strong>
+            {{ order.status }}
+        </p>
+
+        <a href="/delete-order/{{ order.id }}">
+        <button>
+        Delete Order
+        </button>
+        </a>
+
+        <p>
+    <strong>Status:</strong>
+    {{ order.status }}
+</p>
+
+<a href="/update-order-status/{{ order.id }}/Pending">
+    <button>
+        Pending
+    </button>
+</a>
+
+<a href="/update-order-status/{{ order.id }}/Confirmed">
+    <button>
+        Confirmed
+    </button>
+</a>
+
+<a href="/update-order-status/{{ order.id }}/Delivered">
+    <button>
+        Delivered
+    </button>
+</a>
+
+    </div>
+
+    {% endfor %}
+
+</section>
+
+</body>
+</html>

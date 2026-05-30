@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width,
+          initial-scale=1.0">
+
+    <title>Admin Panel</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for(
+          'static',
+          filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <section class="admin-form">
+
+        <h1>Add Product</h1>
+
+        <form method="POST"
+              enctype="multipart/form-data">
+
+            <input type="text"
+                   name="name"
+                   placeholder="Product Name"
+                   required>
+
+            <input type="text"
+                   name="price"
+                   placeholder="Price"
+                   required>
+
+            <input type="text"
+                   name="category"
+                   placeholder="Category"
+                   required>
+
+            <textarea
+                name="description"
+                placeholder="Description"
+                required></textarea>
+
+            <input type="file"
+                   name="image"
+                   required>
+
+            <button type="submit">
+                Add Product
+            </button>
+
+        </form>
+        <h2>All Products</h2>
+
+<div class="grid">
+
+    {% for product in products %}
+
+    <div class="product-card">
+
+        <img src="{{ url_for(
+        'static',
+        filename='images/products/'
+        + product.image ) }}">
+        <h3>
+    ID: {{ product.id }}
+    {{ product.name }}
+</h3>
+
+        <h3>{{ product.name }}</h3>
+
+        <p>{{ product.price }}</p>
+
+        <a href="/edit-product/{{ product.id }}">
+            Edit
+        </a>
+
+        <br><br>
+
+        <a href="/delete-product/{{ product.id }}">
+            Delete
+        </a>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+    </section>
+
+</body>
+</html>

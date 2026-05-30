@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width,
+          initial-scale=1.0">
+
+    <title>
+        Sonalika Implements
+    </title>
+
+    <link rel="stylesheet"
+          href="{{ url_for(
+          'static',
+          filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<section class="categories">
+
+    <h1>
+        Sonalika Implements
+    </h1>
+
+
+<div class="grid">
+
+    <a href="{{ url_for(
+        'category_page',
+        category_name='LAND PREPARATION'
+    ) }}"
+       class="product-link">
+
+        <div class="card">
+            <h3>
+                LAND PREPARATION
+            </h3>
+        </div>
+
+    </a>
+
+    <a href="{{ url_for(
+        'category_page',
+        category_name='SOWING & PLANTING'
+    ) }}"
+       class="product-link">
+
+        <div class="card">
+            <h3>
+                SOWING & PLANTING
+            </h3>
+        </div>
+
+    </a>
+
+    <a href="{{ url_for(
+        'category_page',
+        category_name='POST HARVEST'
+    ) }}"
+       class="product-link">
+
+        <div class="card">
+            <h3>
+                POST HARVEST
+            </h3>
+        </div>
+
+    </a>
+
+    </div>
+
+</section>
+
+</body>
+</html>

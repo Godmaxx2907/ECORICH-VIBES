@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        {{ category }}
+    </title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static',
+          filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+
+        <div class="logo">
+            ECO RICH VIBES
+        </div>
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="/">
+                    Home
+                </a>
+            </li>
+
+            <li>
+                <a href="/products">
+                    Products
+                </a>
+            </li>
+
+            <li>
+                <a href="/cart">
+                    Cart
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+    <!-- Category Products -->
+    <section class="section category-products">
+
+        <h2 class="section-title">
+            {{ category }}
+        </h2>
+
+        <div class="grid">
+
+            {% for product in products %}
+
+            <a href="/product/{{ product.id }}"
+               class="product-link">
+
+                <div class="card">
+
+                    <img src="{{ url_for(
+                        'static',
+                        filename='images/products/' +
+                        product.image
+                    ) }}"
+                    alt="{{ product.name }}">
+
+                    <h3>
+                        {{ product.name }}
+                    </h3>
+
+                    <p>
+                        {{ product.description }}
+                    </p>
+
+                    <h4>
+                        {{ product.price }}
+                    </h4>
+
+                </div>
+
+            </a>
+
+            {% endfor %}
+
+        </div>
+
+    </section>
+
+</body>
+
+</html>

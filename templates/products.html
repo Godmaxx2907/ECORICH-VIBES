@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width,
+          initial-scale=1.0">
+
+    <title>Products</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for(
+          'static',
+          filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<section class="section">
+
+    <h1 class="section-title">
+
+        Products
+
+    </h1>
+
+    <div class="grid">
+
+        {% for product in products %}
+
+        <div class="card">
+
+            <img src="{{
+            url_for(
+            'static',
+            filename=
+            'images/products/'
+            + product.image
+            ) }}"
+            alt="{{ product.name }}">
+
+            <h3>
+                {{ product.name }}
+            </h3>
+
+            <p>
+                ₹{{ product.price }}
+            </p>
+
+            <p>
+                {{ product.description }}
+            </p>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+</body>
+</html>
+```

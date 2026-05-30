@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width,
+          initial-scale=1.0">
+
+    <title>{{ title }}</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for(
+          'static',
+          filename='css/style.css') }}">
+</head>
+
+<body>
+
+<nav class="navbar">
+
+    <div class="logo">
+        ECO RICH VIBES
+    </div>
+
+    <ul class="nav-links">
+
+        <li>
+            <a href="/">Home</a>
+        </li>
+
+        <li>
+            <a href="/products">
+                Products
+            </a>
+        </li>
+
+        <li>
+            <a href="/cart">
+                Cart
+            </a>
+        </li>
+
+    </ul>
+
+</nav>
+
+<section class="section">
+
+    <h2 class="section-title">
+        {{ title }}
+    </h2>
+
+    <div class="grid">
+
+        {% for sub in subcategories %}
+
+        <a href="/category/{{ sub }}"
+           class="product-link">
+
+            <div class="card">
+
+                <h3>
+                    {{ sub }}
+                </h3>
+
+            </div>
+
+        </a>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+</body>
+</html>
